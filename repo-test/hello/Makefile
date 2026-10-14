@@ -1,8 +1,20 @@
-PREFIX ?= /usr/local
+PREFIX?= /usr/local
+CFLAGS?= -O2 -pipe
 
-all:
-	cc hello.c -o hello
+.if !empty(USE:Mdebug)
+CFLAGS+= -DDEBUG
+.endif
+
+all: hello
+
+hello: main.c
+	# MUST BE A REAL TAB CHARACTER HERE:
+	${CC} ${CFLAGS} main.c -o hello
 
 install:
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-  cp hello $(DESTDIR)$(PREFIX)/bin/hello
+	# MUST BE A REAL TAB CHARACTER HERE:
+	mkdir -p ${DESTDIR}${PREFIX}/bin
+	cp hello ${DESTDIR}${PREFIX}/bin/hello
+
+clean:
+	rm -f hello
