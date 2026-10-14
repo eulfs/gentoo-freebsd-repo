@@ -1,3 +1,6 @@
+# MUST HAVE INSTALL, CLEAN AND HELLO TARGETS.
+# HOPEFULLY YOU CAN READ THIS, AS THIS IS WHAT ALL THE PKGS WILL LOOK LIKE.
+
 PREFIX?= /usr/local
 CFLAGS?= -O2 -pipe
 
@@ -8,11 +11,9 @@ CFLAGS+= -DDEBUG
 all: hello
 
 hello: main.c
-	# MUST BE A REAL TAB CHARACTER HERE:
 	${CC} ${CFLAGS} main.c -o hello
 
 install:
-	# MUST BE A REAL TAB CHARACTER HERE:
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp hello ${DESTDIR}${PREFIX}/bin/hello
 
