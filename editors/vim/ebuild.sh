@@ -20,3 +20,5 @@ src_install() {
   cd $DIR
   gmake install
 }
+
+"$1"
