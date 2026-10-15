@@ -23,3 +23,5 @@ src_install() {
   cd "${WORKDIR}" || exit 1
   make DESTDIR="${DESTDIR}" install
 }
+
+"$1"
