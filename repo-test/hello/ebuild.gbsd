@@ -1,0 +1,10 @@
+#!/bin/bash
+
+src_get(){ true }
+src_unpack(){ true }
+src_compile(){
+  gcc main.c -o hello
+}
+src_install(){
+  cp hello /usr/local/bin/
+}
