@@ -1,10 +1,12 @@
 #!/bin/bash
 
-src_get(){ true }
-src_unpack(){ true }
-src_compile(){
-  gcc main.c -o hello
+src_get() { true }
+src_unpack() { true }
+src_compile() {
+    gcc main.c -o hello
 }
-src_install(){
-  cp hello /usr/local/bin/
+src_install() {
+    mkdir -p "${DESTDIR}/usr/local/bin"
+    cp hello "${DESTDIR}/usr/local/bin/"
 }
+"$1"
