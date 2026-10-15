@@ -1,0 +1,28 @@
+#!/bin/bash
+
+PKG_NAME="lavat"
+PKG_VER="master"
+SRC_URI="https://github.com/AngelJumbo/lavat/archive/refs/heads/master.tar.gz"
+
+src_get() {
+    fetch -o "${DISTDIR:-/tmp}/${PKG_NAME}-${PKG_VER}.tar.gz" "${SRC_URI}"
+}
+
+src_unpack() {
+    mkdir -p "${WORKDIR:-/tmp/work}"
+    cd "${WORKDIR:-/tmp/work}" || exit 1
+    tar -xf "${DISTDIR:-/tmp}/${PKG_NAME}-${PKG_VER}.tar.gz"
+}
+
+src_compile() {
+    cd "${WORKDIR:-/tmp/work}/${PKG_NAME}-${PKG_VER}" || exit 1
+    ${CC:-cc} ${CFLAGS:--O2 -pipe} -std=c99 main.c -o lavat
+}
+
+src_install() {
+    cd "${WORKDIR:-/tmp/work}/${PKG_NAME}-${PKG_VER}" || exit 1
+    mkdir -p "${DESTDIR}/usr/local/bin"
+    cp lavat "${DESTDIR}/usr/local/bin/"
+}
+
+"$1"
