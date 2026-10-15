@@ -1,7 +1,7 @@
 #!/bin/bash
 
-src_get() { true }
-src_unpack() { true }
+src_get() { true; }
+src_unpack() { true; }
 src_compile() {
     gcc main.c -o hello
 }
