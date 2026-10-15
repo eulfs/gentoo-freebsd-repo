@@ -14,3 +14,5 @@ src_install() {
   cd /tmp/lavat
   make install
 }
+
+"$1"
